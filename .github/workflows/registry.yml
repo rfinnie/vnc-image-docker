@@ -9,6 +9,7 @@ name: "Build and push registry"
 jobs:
   build:
     runs-on: "ubuntu-latest"
+    permissions: "write-all"
     steps:
       - uses: "actions/checkout@v4"
       - name: "Log in to registry"
