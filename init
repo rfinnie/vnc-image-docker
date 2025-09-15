@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# SPDX-PackageSummary: vnc-image-docker
+# SPDX-FileCopyrightText: © 2025 Ryan Finnie <ryan@finnie.org>
+# SPDX-License-Identifier: MPL-2.0
+
+set -e
+
+RES="$(/srv/vnc-image/extract-image)"
+exec x11vnc -rawfb "file:/tmp/image.raw@${RES}x32:ff/ff00/ff0000" -forever -shared -rfbport 5900

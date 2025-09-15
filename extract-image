@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+
+# SPDX-PackageSummary: vnc-image-docker
+# SPDX-FileCopyrightText: © 2025 Ryan Finnie <ryan@finnie.org>
+# SPDX-License-Identifier: MPL-2.0
+
+import os
+
+
+def get_fn():
+    for fn in (
+        "/srv/vnc-image/local.ppm",
+        "/srv/vnc-image/local.pnm",
+        "/srv/vnc-image/image.ppm",
+        "/srv/vnc-image/image.pnm",
+    ):
+        if os.path.exists(fn):
+            return fn
+
+
+def get_line(f):
+    while True:
+        line = f.readline().strip()
+        if not line.startswith(b"#"):
+            return line
+
+
+if __name__ == "__main__":
+    fn = get_fn()
+    with open(fn, "rb") as f, open("/tmp/image.raw", "wb") as fw:
+        magic = f.readline().strip()
+        if magic != b"P6":
+            raise ValueError("Must be P6 PPM")
+        resolution = get_line(f).decode("UTF-8").replace(" ", "x")
+        depth = get_line(f).decode("UTF-8")
+        while True:
+            buf = f.read(3)
+            if buf == b"":
+                break
+            fw.write(buf + b"\xff")
+    print(resolution)
