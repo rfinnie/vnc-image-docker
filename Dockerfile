@@ -2,13 +2,13 @@
 # SPDX-FileCopyrightText: © 2025 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: MPL-2.0
 
-FROM ubuntu:24.04
+FROM alpine:latest
 
 COPY image.ppm /srv/vnc-image/image.ppm
 COPY init /srv/vnc-image/init
 COPY extract-image /srv/vnc-image/extract-image
 
-RUN apt-get update && apt-get -y install x11vnc python3 && apt-get clean && useradd -ms /bin/bash app
+RUN apk add --no-cache x11vnc python3 && adduser -D app
 
 USER app
 CMD [ "/srv/vnc-image/init" ]
