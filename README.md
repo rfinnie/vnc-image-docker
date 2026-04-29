@@ -29,6 +29,6 @@ This document is provided under the following license:
 
     SPDX-PackageName: vnc-image-docker
     SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
-    SPDX-PackageDownloadLocation: https://github.com/rfinnie/vnc-image-docker
+    SPDX-PackageDownloadLocation: https://codeberg.org/rfinnie/vnc-image-docker
     SPDX-FileCopyrightText: © 2025 Ryan Finnie <ryan@finnie.org>
     SPDX-License-Identifier: CC-BY-SA-4.0
