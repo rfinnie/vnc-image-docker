@@ -1,5 +1,8 @@
 # vnc-image-docker
 
+[![Git forge repository](https://img.shields.io/badge/git-forge-orange?logo=forgejo)](https://forge.colobox.com/rfinnie/vnc-image-docker)
+[![CI pipeline status](https://woodpecker.colobox.com/api/badges/61/status.svg)](https://woodpecker.colobox.com/repos/61)
+
 This is a quick-and-dirty Docker image which serves a static image.
 
 ## Building
